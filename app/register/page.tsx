@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-function register() {
+function signin() {
 
   const [email, setmail] = useState("");
   const [password, setpassword] = useState("");
@@ -12,8 +12,8 @@ function register() {
 
   const router = useRouter();
 
-  const registeruser = async () => {
-    const res = await fetch("/api/auth/register", {
+  const signin_user = async () => {
+    const res = await fetch("/api/auth/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function register() {
     const data = await res.json();
 
     if (res.ok) {
-      alert("register successful");
+      alert("signin successful");
       router.push("/login");
     } else {
       alert(data.message);
@@ -37,7 +37,7 @@ function register() {
   return (
       <div className='flex items-center justify-center h-screen'>
         <div className=' bg-blue-100 text-gray-900 shadow-2xl shadow-blue-400 rounded-3xl text-center'>
-          <h1 className='text-cyan-600 text-4xl m-3'>register</h1>
+          <h1 className='text-cyan-600 text-4xl m-3'>signin</h1>
 
           
           <input type="text" placeholder="enter your name" className='text-gray-950 rounded-md m-5 p-5 border-double border-3 shadow-blue-900 shadow-md border-cyan-300 hover:border-dotted hover:border-3 hover:text-blue-800 hover:border-blue-700 hover:shadow-cyan-400 hover:shadow-xs' value={name} onChange={(e) => setname(e.target.value)}/>
@@ -53,11 +53,11 @@ function register() {
 
           <h1 className="mb-7 mt-5">
             <Link className="p-2 text-4xl border rounded-2xl shadow-xl text-cyan-600 hover:text-cyan-700 hover:bg-blue-200 m-2" href={"/"}>back</Link>
-            <button onClick={registeruser} className='p-2 text-4xl border rounded-2xl shadow-xl text-cyan-700 bg-blue-200 hover:text-cyan-900 hover:bg-green-100 m-2'>check</button>
+            <button onClick={signin_user} className='p-2 text-4xl border rounded-2xl shadow-xl text-cyan-700 bg-blue-200 hover:text-cyan-900 hover:bg-green-100 m-2'>check</button>
           </h1>
         </div>
       </div>
   )
 }
 
-export default register
+export default signin
