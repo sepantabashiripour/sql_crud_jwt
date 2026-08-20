@@ -28,8 +28,8 @@ function register() {
     const data = await res.json();
 
     if (res.ok) {
-      alert("register Successful");
-      router.push("/dashboard");
+      alert("register successful");
+      router.push("/login");
     } else {
       alert(data.message);
     }

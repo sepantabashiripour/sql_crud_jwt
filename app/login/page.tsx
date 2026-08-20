@@ -26,8 +26,8 @@ function login() {
     const data = await res.json();
 
     if (res.ok) {
-      alert("Login Successful");
-      router.push("/dashboard");
+      alert("login successful");
+      router.push("/home");
     } else {
       alert(data.message);
     }
